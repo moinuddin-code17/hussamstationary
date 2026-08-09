@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery | Hussam Stationery</title>
+
+    <meta
+        name="description"
+        content="Explore Hussam Stationery through our product and store gallery."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================================
+           GALLERY HERO
+        ========================================= */
+
+        .gallery-hero {
+            position: relative;
+
+            min-height: 500px;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            background: #111;
+            color: #fff;
+        }
+
+        .gallery-hero-image {
+            position: absolute;
+            inset: 0;
+        }
+
+        .gallery-hero-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            animation: galleryHeroZoom 10s ease-out both;
+        }
+
+        @keyframes galleryHeroZoom {
+
+            from {
+                transform: scale(1.08);
+            }
+
+            to {
+                transform: scale(1);
+            }
+
+        }
+
+        .gallery-hero::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,.88),
+                    rgba(0,0,0,.52),
+                    rgba(0,0,0,.18)
+                );
+        }
+
+        .gallery-hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 780px;
+
+            animation: galleryHeroIn .9s ease both;
+        }
+
+        @keyframes galleryHeroIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .gallery-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 22px;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: .25em;
+        }
+
+        .gallery-label span {
+            width: 32px;
+            height: 1px;
+
+            background: var(--accent);
+        }
+
+        .gallery-hero h1 {
+            font-family: var(--font-heading);
+
+            font-size: clamp(50px, 7vw, 82px);
+
+            line-height: .98;
+
+            letter-spacing: -.055em;
+        }
+
+        .gallery-hero h1 span {
+            color: rgba(255,255,255,.55);
+            font-weight: 500;
+        }
+
+        .gallery-hero p {
+            max-width: 560px;
+
+            margin-top: 25px;
+
+            color: rgba(255,255,255,.72);
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================
+           GALLERY INTRO
+        ========================================= */
+
+        .gallery-intro {
+            background: var(--white);
+        }
+
+        .gallery-intro-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 80px;
+
+            align-items: end;
+        }
+
+        .gallery-intro p {
+            max-width: 520px;
+
+            color: var(--text-light);
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+
+        /* =========================================
+           FILTERS
+        ========================================= */
+
+        .gallery-filter-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-bottom: 45px;
+        }
+
+        .gallery-filters {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+        .gallery-filter {
+            padding: 11px 18px;
+
+            background: transparent;
+
+            border: 1px solid var(--line);
+
+            color: var(--text-light);
+
+            font-family: inherit;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: .08em;
+
+            cursor: pointer;
+
+            transition:
+                background var(--transition),
+                color var(--transition),
+                border-color var(--transition);
+        }
+
+        .gallery-filter:hover,
+        .gallery-filter.active {
+            background: var(--black);
+
+            border-color: var(--black);
+
+            color: var(--white);
+        }
+
+        .gallery-count {
+            color: var(--text-muted);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: .12em;
+        }
+
+
+        /* =========================================
+           MASONRY GALLERY
+        ========================================= */
+
+        .gallery-section {
+            background: var(--off-white);
+        }
+
+        .gallery-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(12, 1fr);
+
+            grid-auto-rows: 110px;
+
+            gap: 14px;
+        }
+
+        .gallery-item {
+            position: relative;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            background: #ddd;
+
+            opacity: 1;
+
+            transform: scale(1);
+
+            transition:
+                opacity .35s ease,
+                transform .35s ease;
+        }
+
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 7;
+            grid-row: span 5;
+        }
+
+        .gallery-item:nth-child(2) {
+            grid-column: span 5;
+            grid-row: span 3;
+        }
+
+        .gallery-item:nth-child(3) {
+            grid-column: span 5;
+            grid-row: span 2;
+        }
+
+        .gallery-item:nth-child(4) {
+            grid-column: span 4;
+            grid-row: span 4;
+        }
+
+        .gallery-item:nth-child(5) {
+            grid-column: span 4;
+            grid-row: span 4;
+        }
+
+        .gallery-item:nth-child(6) {
+            grid-column: span 4;
+            grid-row: span 4;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform .9s cubic-bezier(.22,1,.36,1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            padding: 25px;
+
+            background:
+                linear-gradient(
+                    transparent 35%,
+                    rgba(0,0,0,.72)
+                );
+
+            opacity: 0;
+
+            transition:
+                opacity .4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay-content {
+            color: #fff;
+        }
+
+        .gallery-overlay-category {
+            margin-bottom: 6px;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: .18em;
+
+            color: rgba(255,255,255,.6);
+        }
+
+        .gallery-overlay h3 {
+            font-family: var(--font-heading);
+
+            font-size: 20px;
+        }
+
+        .gallery-open {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255,255,255,.94);
+
+            color: #111;
+
+            transform: translateY(10px);
+
+            transition:
+                transform .4s ease;
+        }
+
+        .gallery-item:hover .gallery-open {
+            transform: translateY(0);
+        }
+
+
+        /* =========================================
+           LIGHTBOX
+        ========================================= */
+
+        .lightbox {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            background: rgba(0,0,0,.94);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity .3s ease,
+                visibility .3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-image {
+            max-width: 90vw;
+            max-height: 82vh;
+
+            object-fit: contain;
+
+            transform: scale(.94);
+
+            transition:
+                transform .4s ease;
+        }
+
+        .lightbox.active .lightbox-image {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+
+            top: 25px;
+            right: 30px;
+
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(255,255,255,.25);
+
+            background: rgba(255,255,255,.08);
+
+            color: #fff;
+
+            font-size: 18px;
+
+            cursor: pointer;
+        }
+
+        .lightbox-close:hover {
+            background: #fff;
+            color: #111;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+
+            bottom: 25px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            color: rgba(255,255,255,.7);
+
+            font-size: 11px;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================
+           GALLERY CTA
+        ========================================= */
+
+        .gallery-cta {
+            padding: 110px 0;
+
+            background: var(--black);
+
+            color: var(--white);
+
+            text-align: center;
+        }
+
+        .gallery-cta-inner {
+            max-width: 760px;
+
+            margin: auto;
+        }
+
+        .gallery-cta h2 {
+            font-size: clamp(40px,5vw,64px);
+        }
+
+        .gallery-cta h2 span {
+            color: rgba(255,255,255,.45);
+        }
+
+        .gallery-cta p {
+            max-width: 560px;
+
+            margin: 22px auto 0;
+
+            color: rgba(255,255,255,.6);
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+        .gallery-cta .btn {
+            margin-top: 35px;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            .gallery-hero {
+                min-height: 500px;
+            }
+
+            .gallery-hero h1 {
+                font-size: 52px;
+            }
+
+            .gallery-intro-grid {
+                grid-template-columns: 1fr;
+
+                gap: 25px;
+            }
+
+            .gallery-filter-bar {
+                display: block;
+            }
+
+            .gallery-count {
+                margin-top: 20px;
+            }
+
+            .gallery-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+
+                grid-auto-rows: 180px;
+            }
+
+            .gallery-item:nth-child(n) {
+                grid-column: span 1;
+                grid-row: span 2;
+            }
+
+            .gallery-item:first-child {
+                grid-column: span 2;
+                grid-row: span 3;
+            }
+
+            .gallery-overlay {
+                opacity: 1;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .gallery-hero {
+                min-height: 470px;
+            }
+
+            .gallery-hero h1 {
+                font-size: 44px;
+            }
+
+            .gallery-hero p {
+                font-size: 13px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+
+                grid-auto-rows: 300px;
+            }
+
+            .gallery-item:nth-child(n),
+            .gallery-item:first-child {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .gallery-overlay {
+                padding: 18px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         TOP BAR
+    ========================================== -->
+
+    <div class="top-bar">
+
+        <div class="container top-bar-inner">
+
+            <div class="top-left">
+
+                <span>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Ashoknagar, Karimnagar
+                </span>
+
+                <span>
+                    <i class="fa-regular fa-clock"></i>
+                    Open Daily
+                </span>
+
+            </div>
+
+            <div class="top-right">
+                Quality stationery & everyday essentials
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <a href="index.html" class="brand">
+
+                <img
+                    src="images/logo.png"
+                    alt="Hussam Stationery logo"
+                    class="brand-logo"
+                >
+
+                <div class="brand-name">
+
+                    <strong>HUSSAM</strong>
+
+                    <span>STATIONERY</span>
+
+                </div>
+
+            </a>
+
+
+            <nav class="main-nav">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="products.html">
+                    Products
+                </a>
+
+                <a href="service.html">
+                    Services
+                </a>
+
+                <a href="gallery.html" class="active">
+                    Gallery
+                </a>
+
+            </nav>
+
+
+            <a
+                href="service.html"
+                class="header-cta"
+            >
+                Visit Store
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Open navigation"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="index.html">Home</a>
+
+            <a href="about.html">About</a>
+
+            <a href="products.html">Products</a>
+
+            <a href="service.html">Services</a>
+
+            <a href="gallery.html">Gallery</a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main>
+
+
+        <!-- HERO -->
+
+        <section class="gallery-hero">
+
+            <div class="gallery-hero-image">
+
+                <img
+                    src="images/hero.png"
+                    alt="Hussam Stationery"
+                >
+
+            </div>
+
+
+            <div class="container">
+
+                <div class="gallery-hero-content">
+
+                    <div class="gallery-label">
+
+                        <span></span>
+
+                        OUR GALLERY
+
+                    </div>
+
+
+                    <h1>
+                        A closer look at
+                        <br>
+                        <span>Hussam Stationery.</span>
+                    </h1>
+
+
+                    <p>
+                        Explore our world of stationery, school
+                        supplies, office essentials and creative
+                        products.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- INTRO -->
+
+        <section class="section gallery-intro">
+
+            <div class="container gallery-intro-grid">
+
+                <div>
+
+                    <div class="section-label">
+                        OUR COLLECTION
+                    </div>
+
+                    <h2>
+                        Simple products.
+                        <span>Everyday inspiration.</span>
+                    </h2>
+
+                </div>
+
+
+                <p>
+                    Take a look at some of the products and
+                    details that make Hussam Stationery a
+                    convenient destination for school, office,
+                    study and creative needs.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- GALLERY -->
+
+        <section class="section gallery-section">
+
+            <div class="container">
+
+
+                <div class="gallery-filter-bar">
+
+                    <div class="gallery-filters">
+
+                        <button
+                            class="gallery-filter active"
+                            data-filter="all"
+                            type="button"
+                        >
+                            ALL
+                        </button>
+
+                        <button
+                            class="gallery-filter"
+                            data-filter="writing"
+                            type="button"
+                        >
+                            WRITING
+                        </button>
+
+                        <button
+                            class="gallery-filter"
+                            data-filter="school"
+                            type="button"
+                        >
+                            SCHOOL
+                        </button>
+
+                        <button
+                            class="gallery-filter"
+                            data-filter="office"
+                            type="button"
+                        >
+                            OFFICE
+                        </button>
+
+                        <button
+                            class="gallery-filter"
+                            data-filter="creative"
+                            type="button"
+                        >
+                            CREATIVE
+                        </button>
+
+                    </div>
+
+
+                    <div class="gallery-count">
+                        06 COLLECTIONS
+                    </div>
+
+                </div>
+
+
+
+                <div class="gallery-grid">
+
+
+                    <!-- IMAGE 01 -->
+
+                    <div
+                        class="gallery-item"
+                        data-category="writing"
+                        data-title="Writing Essentials"
+                    >
+
+                        <img
+                            src="images/pens.jpg"
+                            alt="Writing essentials"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="gallery-overlay-content">
+
+                                <div class="gallery-overlay-category">
+                                    WRITING
+                                </div>
+
+                                <h3>
+                                    Writing Essentials
+                                </h3>
+
+                            </div>
+
+
+                            <div class="gallery-open">
+
+                                <i class="fa-solid fa-plus"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- IMAGE 02 -->
+
+                    <div
+                        class="gallery-item"
+                        data-category="school"
+                        data-title="Notebooks & Study"
+                    >
+
+                        <img
+                            src="images/notebooks.jpg"
+                            alt="Notebooks"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="gallery-overlay-content">
+
+                                <div class="gallery-overlay-category">
+                                    SCHOOL
+                                </div>
+
+                                <h3>
+                                    Notebooks & Study
+                                </h3>
+
+                            </div>
+
+
+                            <div class="gallery-open">
+
+                                <i class="fa-solid fa-plus"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- IMAGE 03 -->
+
+                    <div
+                        class="gallery-item"
+                        data-category="school"
+                        data-title="School Essentials"
+                    >
+
+                        <img
+                            src="images/school.png"
+                            alt="School supplies"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="gallery-overlay-content">
+
+                                <div class="gallery-overlay-category">
+                                    SCHOOL
+                                </div>
+
+                                <h3>
+                                    School Essentials
+                                </h3>
+
+                            </div>
+
+
+                            <div class="gallery-open">
+
+                                <i class="fa-solid fa-plus"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- IMAGE 04 -->
+
+                    <div
+                        class="gallery-item"
+                        data-category="office"
+                        data-title="Office Organization"
+                    >
+
+                        <img
+                            src="images/office.jpg"
+                            alt="Office supplies"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="gallery-overlay-content">
+
+                                <div class="gallery-overlay-category">
+                                    OFFICE
+                                </div>
+
+                                <h3>
+                                    Office Organization
+                                </h3>
+
+                            </div>
+
+
+                            <div class="gallery-open">
+
+                                <i class="fa-solid fa-plus"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- IMAGE 05 -->
+
+                    <div
+                        class="gallery-item"
+                        data-category="creative"
+                        data-title="Creative Supplies"
+                    >
+
+                        <img
+                            src="images/art.jpg"
+                            alt="Art supplies"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="gallery-overlay-content">
+
+                                <div class="gallery-overlay-category">
+                                    CREATIVE
+                                </div>
+
+                                <h3>
+                                    Creative Supplies
+                                </h3>
+
+                            </div>
+
+
+                            <div class="gallery-open">
+
+                                <i class="fa-solid fa-plus"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- IMAGE 06 -->
+
+                    <div
+                        class="gallery-item"
+                        data-category="office"
+                        data-title="Files & Organization"
+                    >
+
+                        <img
+                            src="images/files.jpg"
+                            alt="Files and organization"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="gallery-overlay-content">
+
+                                <div class="gallery-overlay-category">
+                                    OFFICE
+                                </div>
+
+                                <h3>
+                                    Files & Organization
+                                </h3>
+
+                            </div>
+
+
+                            <div class="gallery-open">
+
+                                <i class="fa-solid fa-plus"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CTA -->
+
+        <section class="gallery-cta">
+
+            <div class="container">
+
+                <div class="gallery-cta-inner">
+
+                    <div class="section-label">
+                        HUSSAM STATIONERY
+                    </div>
+
+
+                    <h2>
+                        See something
+                        <span>you like?</span>
+                    </h2>
+
+
+                    <p>
+                        Explore our products or visit us in
+                        Ashoknagar, Karimnagar to discover more.
+                    </p>
+
+
+                    <a
+                        href="products.html"
+                        class="btn btn-light"
+                    >
+                        Explore Products
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-main">
+
+
+                <div class="footer-brand">
+
+                    <a
+                        href="index.html"
+                        class="brand footer-brand-link"
+                    >
+
+                        <img
+                            src="images/logo.png"
+                            alt="Hussam Stationery logo"
+                            class="brand-logo"
+                        >
+
+                        <div class="brand-name">
+
+                            <strong>HUSSAM</strong>
+
+                            <span>STATIONERY</span>
+
+                        </div>
+
+                    </a>
+
+
+                    <p>
+                        Quality stationery, school supplies,
+                        office essentials and creative products
+                        for everyday life.
+                    </p>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        NAVIGATION
+                    </h3>
+
+                    <a href="index.html">Home</a>
+
+                    <a href="about.html">About</a>
+
+                    <a href="products.html">Products</a>
+
+                    <a href="service.html">Services</a>
+
+                    <a href="gallery.html">Gallery</a>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        PRODUCTS
+                    </h3>
+
+                    <a href="products.html">
+                        Stationery
+                    </a>
+
+                    <a href="products.html">
+                        School Supplies
+                    </a>
+
+                    <a href="products.html">
+                        Office Supplies
+                    </a>
+
+                    <a href="products.html">
+                        Art Supplies
+                    </a>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        VISIT US
+                    </h3>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Ashoknagar, Karimnagar
+                    </p>
+
+                    <p>
+                        <i class="fa-regular fa-clock"></i>
+                        Open Daily
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Hussam Stationery. All rights reserved.
+                </span>
+
+                <span>
+                    Quality · Value · Service
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================
+         LIGHTBOX
+    ========================================== -->
+
+    <div
+        class="lightbox"
+        id="lightbox"
+        aria-hidden="true"
+    >
+
+        <button
+            class="lightbox-close"
+            id="lightboxClose"
+            type="button"
+            aria-label="Close image"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+
+        <img
+            class="lightbox-image"
+            id="lightboxImage"
+            src=""
+            alt=""
+        >
+
+
+        <div
+            class="lightbox-caption"
+            id="lightboxCaption"
+        ></div>
+
+    </div>
+
+
+
+    <!-- BACK TO TOP -->
+
+    <button
+        class="back-to-top"
+        id="backToTop"
+        type="button"
+        aria-label="Back to top"
+    >
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        /* =========================================
+           GALLERY FILTER
+        ========================================== */
+
+        const filterButtons =
+            document.querySelectorAll(".gallery-filter");
+
+        const galleryItems =
+            document.querySelectorAll(".gallery-item");
+
+
+        filterButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const filter =
+                    button.dataset.filter;
+
+
+                filterButtons.forEach(item => {
+                    item.classList.remove("active");
+                });
+
+
+                button.classList.add("active");
+
+
+                galleryItems.forEach(item => {
+
+                    const category =
+                        item.dataset.category;
+
+
+                    if (
+                        filter === "all" ||
+                        category === filter
+                    ) {
+
+                        item.classList.remove("hidden");
+
+                    } else {
+
+                        item.classList.add("hidden");
+
+                    }
+
+                });
+
+            });
+
+        });
+
+
+
+        /* =========================================
+           LIGHTBOX
+        ========================================== */
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        const lightboxImage =
+            document.getElementById("lightboxImage");
+
+        const lightboxCaption =
+            document.getElementById("lightboxCaption");
+
+        const lightboxClose =
+            document.getElementById("lightboxClose");
+
+
+        galleryItems.forEach(item => {
+
+            item.addEventListener("click", () => {
+
+                const image =
+                    item.querySelector("img");
+
+                lightboxImage.src =
+                    image.src;
+
+                lightboxImage.alt =
+                    image.alt;
+
+                lightboxCaption.textContent =
+                    item.dataset.title;
+
+
+                lightbox.classList.add("active");
+
+                lightbox.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
+
+                document.body.style.overflow =
+                    "hidden";
+
+            });
+
+        });
+
+
+        function closeLightbox() {
+
+            lightbox.classList.remove("active");
+
+            lightbox.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+        lightboxClose.addEventListener(
+            "click",
+            closeLightbox
+        );
+
+
+        lightbox.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    event.target === lightbox
+                ) {
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
