@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Products | Hussam Stationary</title>
+
+    <meta name="description"
+          content="Explore stationery, school supplies, office products, groceries, edible items and everyday essentials at Hussam Stationary, Karimnagar.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="style.css">
+
+    <!-- Products CSS -->
+    <style>
+
+        /* =========================================
+           PRODUCTS PAGE
+        ========================================= */
+
+        .products-hero {
+
+            min-height: 560px;
+
+            display: flex;
+
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #101010,
+                    #242424,
+                    #555
+                );
+
+            color: white;
+        }
+
+
+        .products-hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+
+            height: 650px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(255,255,255,.12);
+
+            right: -180px;
+
+            top: -200px;
+
+            animation:
+                productsRotate 18s linear infinite;
+        }
+
+
+        .products-hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 900px;
+        }
+
+
+        .products-hero h1 {
+
+            font-family:
+                "Playfair Display",
+                Georgia,
+                serif;
+
+            font-size:
+                clamp(52px, 7vw, 90px);
+
+            line-height: 1;
+
+            font-weight: 500;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .products-hero h1 span {
+
+            color: #c9aa6c;
+        }
+
+
+        .products-hero p {
+
+            max-width: 650px;
+
+            color: #cfcfcf;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+        @keyframes productsRotate {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =========================================
+           CATEGORY FILTER
+        ========================================= */
+
+        .product-filter {
+
+            padding: 45px 0;
+
+            background: #f7f7f5;
+
+            border-bottom:
+                1px solid #ddd;
+        }
+
+
+        .filter-list {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+
+        .filter-btn {
+
+            border: 1px solid #d5d5d0;
+
+            background: white;
+
+            padding: 12px 20px;
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            color: #666;
+
+            transition:
+                all .35s
+                cubic-bezier(.22,1,.36,1);
+        }
+
+
+        .filter-btn:hover,
+        .filter-btn.active {
+
+            background: #111;
+
+            color: white;
+
+            border-color: #111;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =========================================
+           PRODUCT GRID
+        ========================================= */
+
+        .products-section {
+
+            background: white;
+        }
+
+
+        .products-heading {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-end;
+
+            gap: 30px;
+
+            margin-bottom: 60px;
+        }
+
+
+        .products-heading h2 {
+
+            font-family:
+                "Playfair Display",
+                Georgia,
+                serif;
+
+            font-size:
+                clamp(42px, 5vw, 65px);
+
+            font-weight: 500;
+
+            line-height: 1;
+
+            letter-spacing: -2px;
+        }
+
+
+        .products-heading p {
+
+            max-width: 430px;
+
+            color: #777;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        .products-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+
+        /* =========================================
+           PRODUCT CARD
+        ========================================= */
+
+        .product-card {
+
+            background: white;
+
+            border:
+                1px solid #e3e3df;
+
+            overflow: hidden;
+
+            position: relative;
+
+            transition:
+                all .5s
+                cubic-bezier(.22,1,.36,1);
+        }
+
+
+        .product-card:hover {
+
+            transform:
+                translateY(-8px);
+
+            box-shadow:
+                0 25px 60px
+                rgba(0,0,0,.10);
+        }
+
+
+        .product-card-image {
+
+            height: 320px;
+
+            overflow: hidden;
+
+            background: #f1f1ef;
+
+            position: relative;
+        }
+
+
+        .product-card-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform 1s
+                cubic-bezier(.22,1,.36,1);
+        }
+
+
+        .product-card:hover
+        .product-card-image img {
+
+            transform:
+                scale(1.07);
+        }
+
+
+        .product-number {
+
+            position: absolute;
+
+            top: 18px;
+
+            left: 18px;
+
+            background: rgba(255,255,255,.92);
+
+            padding: 8px 11px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+
+        .product-card-content {
+
+            padding: 27px;
+        }
+
+
+        .product-category {
+
+            display: block;
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            color: #a48752;
+
+            margin-bottom: 10px;
+        }
+
+
+        .product-card h3 {
+
+            font-family:
+                "Playfair Display",
+                Georgia,
+                serif;
+
+            font-size: 28px;
+
+            font-weight: 600;
+
+            line-height: 1.1;
+
+            margin-bottom: 12px;
+        }
+
+
+        .product-card p {
+
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.75;
+
+            margin-bottom: 20px;
+        }
+
+
+        .product-link {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        .product-link i {
+
+            transition:
+                transform .35s ease;
+        }
+
+
+        .product-link:hover i {
+
+            transform:
+                translateX(5px);
+        }
+
+
+        /* =========================================
+           FEATURED PRODUCT
+        ========================================= */
+
+        .product-card.featured {
+
+            grid-column:
+                span 2;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+        }
+
+
+        .product-card.featured
+        .product-card-image {
+
+            height: 100%;
+
+            min-height: 400px;
+        }
+
+
+        .product-card.featured
+        .product-card-content {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding: 50px;
+        }
+
+
+        .product-card.featured h3 {
+
+            font-size:
+                clamp(35px,4vw,52px);
+        }
+
+
+        /* =========================================
+           STORE MESSAGE
+        ========================================= */
+
+        .products-message {
+
+            background: #f3f1ec;
+
+            text-align: center;
+        }
+
+
+        .products-message-inner {
+
+            max-width: 800px;
+
+            margin: auto;
+        }
+
+
+        .products-message h2 {
+
+            font-family:
+                "Playfair Display",
+                Georgia,
+                serif;
+
+            font-size:
+                clamp(44px,6vw,72px);
+
+            line-height: 1.05;
+
+            font-weight: 500;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .products-message h2 span {
+
+            color: #a98a52;
+        }
+
+
+        .products-message p {
+
+            max-width: 620px;
+
+            margin:
+                0 auto 35px;
+
+            color: #666;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+            .products-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+
+            .product-card.featured {
+
+                grid-column:
+                    span 2;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .products-hero {
+
+                min-height: 500px;
+            }
+
+
+            .products-hero h1 {
+
+                font-size: 50px;
+
+                letter-spacing: -2px;
+            }
+
+
+            .products-heading {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .products-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .product-card.featured {
+
+                grid-column:
+                    auto;
+
+                display: block;
+            }
+
+
+            .product-card.featured
+            .product-card-image {
+
+                min-height: 300px;
+
+                height: 300px;
+            }
+
+
+            .product-card.featured
+            .product-card-content {
+
+                padding: 30px;
+            }
+
+
+            .product-card-image {
+
+                height: 280px;
+            }
+
+
+            .filter-list {
+
+                justify-content: flex-start;
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .products-hero h1 {
+
+                font-size: 42px;
+            }
+
+
+            .filter-btn {
+
+                padding:
+                    10px 13px;
+
+                font-size: 9px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     LOADER
+========================================= -->
+
+<div class="page-loader" id="pageLoader">
+
+    <div class="loader-inner">
+
+        <img src="images/logo.png"
+             alt="Hussam Stationary"
+             class="loader-logo">
+
+        <div class="loader-line"></div>
+
+        <p>Loading</p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     TOP BAR
+========================================= -->
+
+<div class="top-bar">
+
+    <div class="container top-bar-inner">
+
+        <div class="top-left">
+
+            <span>
+                📍 Ashoknagar, Karimnagar
+            </span>
+
+            <span>•</span>
+
+            <span>
+                Open Daily
+            </span>
+
+        </div>
+
+        <div class="top-right">
+
+            Everyday Essentials • One Convenient Store
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="main-header">
+
+    <div class="container header-inner">
+
+
+        <a href="index.html"
+           class="brand">
+
+            <img src="images/logo.png"
+                 alt="Hussam Stationary Logo"
+                 class="brand-logo">
+
+            <div class="brand-text">
+
+                <strong>HUSSAM</strong>
+
+                <span>STATIONARY</span>
+
+            </div>
+
+        </a>
+
+
+        <nav class="desktop-nav">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="products.html"
+               class="active">
+                Products
+            </a>
+
+            <a href="service.html">
+                Services
+            </a>
+
+            <a href="gallery.html">
+                Gallery
+            </a>
+
+            <a href="index.html#contact"
+               class="nav-button">
+                Visit Store →
+            </a>
+
+        </nav>
+
+
+        <button class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open menu">
+
+            ☰
+
+        </button>
+
+    </div>
+
+
+    <div class="mobile-nav"
+         id="mobileNav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <a href="service.html">
+            Services
+        </a>
+
+        <a href="gallery.html">
+            Gallery
+        </a>
+
+        <a href="index.html#contact">
+            Visit Store
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     PRODUCTS HERO
+========================================= -->
+
+<section class="products-hero">
+
+    <div class="container products-hero-content">
+
+        <span class="section-label">
+            OUR COLLECTION
+        </span>
+
+        <h1>
+
+            Products For
+            <span>Everyday Life.</span>
+
+        </h1>
+
+        <p>
+
+            From school and office stationery to
+            groceries, edible items and everyday
+            household essentials, discover a
+            convenient collection at Hussam Stationary.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FILTER
+========================================= -->
+
+<section class="product-filter">
+
+    <div class="container">
+
+        <div class="filter-list">
+
+            <button class="filter-btn active"
+                    data-filter="all">
+
+                All Products
+
+            </button>
+
+            <button class="filter-btn"
+                    data-filter="stationery">
+
+                Stationery
+
+            </button>
+
+            <button class="filter-btn"
+                    data-filter="school">
+
+                School
+
+            </button>
+
+            <button class="filter-btn"
+                    data-filter="office">
+
+                Office
+
+            </button>
+
+            <button class="filter-btn"
+                    data-filter="art">
+
+                Art
+
+            </button>
+
+            <button class="filter-btn"
+                    data-filter="grocery">
+
+                Groceries
+
+            </button>
+
+            <button class="filter-btn"
+                    data-filter="edible">
+
+                Edibles
+
+            </button>
+
+            <button class="filter-btn"
+                    data-filter="household">
+
+                Household
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     PRODUCTS
+========================================= -->
+
+<section class="products-section section">
+
+    <div class="container">
+
+
+        <div class="products-heading reveal">
+
+            <div>
+
+                <span class="section-label">
+                    HUSSAM COLLECTION
+                </span>
+
+                <h2>
+                    Explore Our
+                    <br>
+                    <span>Categories.</span>
+                </h2>
+
+            </div>
+
+            <p>
+
+                A carefully selected range of useful
+                products for students, families,
+                professionals and everyday shopping.
+
+            </p>
+
+        </div>
+
+
+        <div class="products-grid"
+             id="productsGrid">
+
+
+            <!-- =================================
+                 01 STATIONERY
+            ================================== -->
+
+            <article class="product-card featured reveal"
+                     data-category="stationery">
+
+                <div class="product-card-image">
+
+                    <img src="images/notebooks.jpg"
+                         alt="Stationery and notebooks">
+
+                    <span class="product-number">
+                        01
+                    </span>
+
+                </div>
+
+                <div class="product-card-content">
+
+                    <span class="product-category">
+                        Stationery
+                    </span>
+
+                    <h3>
+                        Writing &
+                        Stationery Essentials
+                    </h3>
+
+                    <p>
+
+                        Discover notebooks, writing
+                        instruments, paper products and
+                        everyday stationery for school,
+                        work and personal use.
+
+                    </p>
+
+                    <a href="#"
+                       class="product-link">
+
+                        Explore Category
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 02 PENS
+            ================================== -->
+
+            <article class="product-card reveal"
+                     data-category="stationery">
+
+                <div class="product-card-image">
+
+                    <img src="images/pens.jpg"
+                         alt="Pens and writing products">
+
+                    <span class="product-number">
+                        02
+                    </span>
+
+                </div>
+
+                <div class="product-card-content">
+
+                    <span class="product-category">
+                        Stationery
+                    </span>
+
+                    <h3>
+                        Pens &
+                        Writing Tools
+                    </h3>
+
+                    <p>
+
+                        Everyday writing tools for
+                        students, offices and home use.
+
+                    </p>
+
+                    <a href="#"
+                       class="product-link">
+
+                        View Products
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 03 SCHOOL
+            ================================== -->
+
+            <article class="product-card reveal"
+                     data-category="school">
+
+                <div class="product-card-image">
+
+                    <img src="images/school.png"
+                         alt="School supplies">
+
+                    <span class="product-number">
+                        03
+                    </span>
+
+                </div>
+
+                <div class="product-card-content">
+
+                    <span class="product-category">
+                        Education
+                    </span>
+
+                    <h3>
+                        School
+                        Essentials
+                    </h3>
+
+                    <p>
+
+                        Supplies and useful products
+                        for students and school life.
+
+                    </p>
+
+                    <a href="#"
+                       class="product-link">
+
+                        Explore
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 04 OFFICE
+            ================================== -->
+
+            <article class="product-card reveal"
+                     data-category="office">
+
+                <div class="product-card-image">
+
+                    <img src="images/files.jpg"
+                         alt="Office files and supplies">
+
+                    <span class="product-number">
+                        04
+                    </span>
+
+                </div>
+
+                <div class="product-card-content">
+
+                    <span class="product-category">
+                        Office
+                    </span>
+
+                    <h3>
+                        Office
+                        Supplies
+                    </h3>
+
+                    <p>
+
+                        Files, paper products,
+                        organization supplies and
+                        workplace essentials.
+
+                    </p>
+
+                    <a href="#"
+                       class="product-link">
+
+                        Explore
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 05 ART
+            ================================== -->
+
+            <article class="product-card reveal"
+                     data-category="art">
+
+                <div class="product-card-image">
+
+                    <img src="images/art.jpg"
+                         alt="Art and creative supplies">
+
+                    <span class="product-number">
+                        05
+                    </span>
+
+                </div>
+
+                <div class="product-card-content">
+
+                    <span class="product-category">
+                        Creativity
+                    </span>
+
+                    <h3>
+                        Art &
+                        Creativity
+                    </h3>
+
+                    <p>
+
+                        Creative supplies for
+                        students, artists and
+                        creative projects.
+
+                    </p>
+
+                    <a href="#"
+                       class="product-link">
+
+                        Explore
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 06 GROCERY
+            ================================== -->
+
+            <article class="product-card reveal"
+                     data-category="grocery">
+
+                <div class="product-card-image">
+
+                    <img src="images/doms.jpg"
+                         alt="Daily grocery products">
+
+                    <span class="product-number">
+                        06
+                    </span>
+
+                </div>
+
+                <div class="product-card-content">
+
+                    <span class="product-category">
+                        Daily Needs
+                    </span>
+
+                    <h3>
+                        Daily
+                        Groceries
+                    </h3>
+
+                    <p>
+
+                        Convenient grocery products
+                        for everyday household needs.
+
+                    </p>
+
+                    <a href="#"
+                       class="product-link">
+
+                        Explore
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 07 EDIBLES
+            ================================== -->
+
+            <article class="product-card reveal"
+                     data-category="edible">
+
+                <div class="product-card-image">
+
+                    <img src="images/apsara.webp"
+                         alt="Edible products">
+
+                    <span class="product-number">
+                        07
+                    </span>
+
+                </div>
+
+                <div class="product-card-content">
+
+                    <span class="product-category">
+                        Food & Snacks
+                    </span>
+
+                    <h3>
+                        Edible
+                        Items
+                    </h3>
+
+                    <p>
+
+                        Everyday edible products and
+                        convenient items for your
+                        shopping needs.
+
+                    </p>
+
+                    <a href="#"
+                       class="product-link">
+
+                        Explore
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 08 HOUSEHOLD
+            ================================== -->
+
+            <article class="product-card reveal"
+                     data-category="household">
+
+                <div class="product-card-image">
+
+                    <img src="images/office.jpg"
+                         alt="Household essentials">
+
+                    <span class="product-number">
+                        08
+                    </span>
+
+                </div>
+
+                <div class="product-card-content">
+
+                    <span class="product-category">
+                        Household
+                    </span>
+
+                    <h3>
+                        Household
+                        Essentials
+                    </h3>
+
+                    <p>
+
+                        Useful everyday products for
+                        your home and daily routines.
+
+                    </p>
+
+                    <a href="#"
+                       class="product-link">
+
+                        Explore
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     STORE MESSAGE
+========================================= -->
+
+<section class="products-message section">
+
+    <div class="container">
+
+        <div class="products-message-inner reveal">
+
+            <span class="section-label">
+                MORE THAN STATIONERY
+            </span>
+
+            <h2>
+
+                One Store.
+                <span>Many Needs.</span>
+
+            </h2>
+
+            <p>
+
+                Whether you need a notebook for school,
+                supplies for your office, groceries for
+                home or something for your everyday needs,
+                Hussam Stationary aims to make shopping
+                simple and convenient.
+
+            </p>
+
+            <a href="index.html#contact"
+               class="primary-button">
+
+                Visit Our Store →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+
+        <div class="footer-brand">
+
+            <img src="images/logo.png"
+                 alt="Hussam Stationary">
+
+            <h3>
+                HUSSAM STATIONARY
+            </h3>
+
+            <p>
+
+                Stationery, groceries and everyday
+                essentials — all in one convenient place.
+
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>
+                Explore
+            </h4>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+            <a href="service.html">
+                Services
+            </a>
+
+            <a href="gallery.html">
+                Gallery
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>
+                Categories
+            </h4>
+
+            <a href="products.html">
+                Stationery
+            </a>
+
+            <a href="products.html">
+                School Supplies
+            </a>
+
+            <a href="products.html">
+                Office Supplies
+            </a>
+
+            <a href="products.html">
+                Groceries
+            </a>
+
+            <a href="products.html">
+                Daily Essentials
+            </a>
+
+        </div>
+
+
+        <div class="footer-contact">
+
+            <h4>
+                Visit Us
+            </h4>
+
+            <p>
+                Ashoknagar,<br>
+                Karimnagar, Telangana
+            </p>
+
+            <p>
+                Open Daily
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <div class="container">
+
+            <p>
+                © 2026 Hussam Stationary.
+                All Rights Reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================
+     BACK TO TOP
+========================================= -->
+
+<button class="back-to-top"
+        id="backToTop"
+        aria-label="Back to top">
+
+    ↑
+
+</button>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script src="script.js"></script>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const buttons =
+        document.querySelectorAll(".filter-btn");
+
+    const cards =
+        document.querySelectorAll(".product-card");
+
+
+    buttons.forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            buttons.forEach(btn => {
+
+                btn.classList.remove("active");
+
+            });
+
+            this.classList.add("active");
+
+            const filter =
+                this.dataset.filter;
+
+
+            cards.forEach(card => {
+
+                const category =
+                    card.dataset.category;
+
+
+                if (
+                    filter === "all" ||
+                    category === filter
+                ) {
+
+                    card.style.display = "";
+
+                    setTimeout(() => {
+
+                        card.style.opacity = "1";
+
+                        card.style.transform =
+                            "translateY(0)";
+
+                    }, 30);
+
+                } else {
+
+                    card.style.opacity = "0";
+
+                    card.style.transform =
+                        "translateY(15px)";
+
+                    setTimeout(() => {
+
+                        card.style.display = "none";
+
+                    }, 300);
+
+                }
+
+            });
+
+        });
+
+    });
+
+});
+
+</script>
+
+
+</body>
+
+</html>
